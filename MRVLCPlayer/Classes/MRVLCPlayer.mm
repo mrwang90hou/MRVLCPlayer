@@ -10,7 +10,7 @@
 #import <MediaPlayer/MediaPlayer.h>
 #import <AVFoundation/AVFoundation.h>
 #import "MRVideoConst.h"
-
+#import "SVProgressHUD.h"
 static const NSTimeInterval kVideoPlayerAnimationTimeinterval = 0.3f;
 
 @interface MRVLCPlayer ()
@@ -74,7 +74,7 @@ static const NSTimeInterval kVideoPlayerAnimationTimeinterval = 0.3f;
 
 #pragma mark - Private Method
 - (void)setupView {
-    [self setBackgroundColor:[UIColor blackColor]];
+//    [self setBackgroundColor:[UIColor blackColor]];//
 }
 
 - (void)setupPlayer {
@@ -93,8 +93,16 @@ static const NSTimeInterval kVideoPlayerAnimationTimeinterval = 0.3f;
     [self.controlView.fullScreenButton addTarget:self action:@selector(fullScreenButtonClick) forControlEvents:UIControlEventTouchUpInside];
     [self.controlView.shrinkScreenButton addTarget:self action:@selector(shrinkScreenButtonClick) forControlEvents:UIControlEventTouchUpInside];
     [self.controlView.progressSlider addTarget:self action:@selector(progressClick) forControlEvents:UIControlEventTouchUpInside];
+    
+    //为resolutionLabel添加事件【选择清晰度】
+//    self.controlView.resolutionLabel
+    [self.controlView.picBtn addTarget:self action:@selector(picBtnMethod) forControlEvents:UIControlEventTouchUpInside];
+    [self.controlView.vidBtn addTarget:self action:@selector(vidBtnMethod) forControlEvents:UIControlEventTouchUpInside];
+    
+    
+    
 }
-
+//设置通知
 - (void)setupNotification {
     
     [[UIDevice currentDevice] beginGeneratingDeviceOrientationNotifications];
@@ -142,13 +150,35 @@ static const NSTimeInterval kVideoPlayerAnimationTimeinterval = 0.3f;
     
     if (UIDeviceOrientationIsLandscape([UIDevice currentDevice].orientation)) {
         self.isFullscreenModel = YES;
-        
     }else {
         self.isFullscreenModel = NO;
     }
-    [self.controlView autoFadeOutControlBar];
+    [self.controlView autoFadeOutControlBar];//自动淡出控制栏
 }
-
+//监听屏幕旋转方法
+- (void)orientationChange{
+    NSLog(@"%ld",[UIDevice currentDevice].orientation);
+    if ([UIDevice currentDevice].orientation == 3 || [UIDevice currentDevice].orientation == 4) {
+        
+//        [self.navigationController setNavigationBarHidden:YES animated:YES];
+//        [self.recordView bringSubviewToFront:self.playView];
+//        [self hideTabBar];
+//        [self.playView mas_updateConstraints:^(MASConstraintMaker *make) {
+//            make.size.mas_equalTo(CGSizeMake(SCREEN_WIDTH,SCREEN_HEIGHT));
+//        }];
+//        _picBtn.hidden = false;
+    }else{
+//        [self setNotScreenRotate];
+//        self.navigationController.navigationBarHidden = NO;
+//        [self.recordView sendSubviewToBack:self.playView];
+//        [self showTabBar];
+//        [self.playView mas_updateConstraints:^(MASConstraintMaker *make) {
+//            make.size.mas_equalTo(CGSizeMake(SCREEN_WIDTH,FixHeightNumber(210)));
+//        }];
+//
+//        _picBtn.hidden = true;
+    }
+}
 /**
  *    即将进入后台的处理
  */
@@ -185,7 +215,7 @@ static const NSTimeInterval kVideoPlayerAnimationTimeinterval = 0.3f;
     [self forceChangeOrientation:UIInterfaceOrientationLandscapeRight];
 
 }
-
+//缩小屏幕按钮点击
 - (void)shrinkScreenButtonClick {
     
     [self forceChangeOrientation:UIInterfaceOrientationPortrait];;
@@ -201,6 +231,18 @@ static const NSTimeInterval kVideoPlayerAnimationTimeinterval = 0.3f;
     
     [self.controlView autoFadeOutControlBar];
 }
+//新增两个事件方法
+-(void)picBtnMethod{
+    [SVProgressHUD showInfoWithStatus:@"拍照"];
+}
+-(void)vidBtnMethod{
+    
+    [SVProgressHUD showInfoWithStatus:@"开始录像"];
+}
+
+
+
+
 
 #pragma mark Player Logic
 - (void)play {
@@ -299,7 +341,7 @@ static const NSTimeInterval kVideoPlayerAnimationTimeinterval = 0.3f;
     return _controlView;
 }
 
-
+//设置为全屏模式
 - (void)setIsFullscreenModel:(BOOL)isFullscreenModel {
     
     if (_isFullscreenModel == isFullscreenModel) {
@@ -325,6 +367,9 @@ static const NSTimeInterval kVideoPlayerAnimationTimeinterval = 0.3f;
             }
             self.controlView.frame = self.bounds;
             [self.controlView layoutIfNeeded];
+            //显示拍照及录像按钮
+            self.controlView.picBtn.hidden = NO;
+            [self.controlView.vidBtn setHidden:NO];
             self.controlView.fullScreenButton.hidden = YES;
             self.controlView.shrinkScreenButton.hidden = NO;
         } completion:^(BOOL finished) {}];
@@ -335,6 +380,9 @@ static const NSTimeInterval kVideoPlayerAnimationTimeinterval = 0.3f;
             self.frame = _originFrame;
             self.controlView.frame = self.bounds;
             [self.controlView layoutIfNeeded];
+            //隐藏拍照及录像按钮
+            self.controlView.picBtn.hidden = YES;
+            [self.controlView.vidBtn setHidden:YES];
             self.controlView.fullScreenButton.hidden = NO;
             self.controlView.shrinkScreenButton.hidden = YES;
             

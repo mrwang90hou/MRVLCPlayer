@@ -7,7 +7,7 @@
 //
 
 #import "MRVideoControlView.h"
-
+#import "Masonry.h"
 @interface MRVideoControlView ()
 @property (nonatomic, strong) UIPanGestureRecognizer *pan;
 @end
@@ -41,6 +41,34 @@
     self.timeLabel.frame          = CGRectMake(CGRectGetMaxX(self.playButton.frame), self.playButton.frame.origin.y, CGRectGetWidth(self.bottomBar.bounds), CGRectGetHeight(self.timeLabel.bounds));
     self.alertlable.center        = CGPointMake(CGRectGetWidth(self.bounds) / 2, CGRectGetHeight(self.bounds) / 2);
     
+    self.actionModelLabel.frame = CGRectMake(CGRectGetMaxX(self.playButton.frame), self.playButton.frame.origin.y, CGRectGetWidth(self.bottomBar.bounds), CGRectGetHeight(self.actionModelLabel.bounds));
+    
+    self.resolutionLabel.frame = CGRectMake(CGRectGetMinX(self.fullScreenButton.frame)-20, self.fullScreenButton.frame.origin.y,CGRectGetWidth(self.bottomBar.bounds), CGRectGetHeight(self.resolutionLabel.bounds));
+    
+    //约束布局
+    [self.totalBtnView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerY.equalTo(self);
+        make.right.mas_equalTo(self);
+        make.size.mas_equalTo(CGSizeMake(55, 120));
+    }];
+    [self.picBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(self.totalBtnView.mas_top);
+//        make.top.equalTo(self.totalBtnView);
+        make.right.mas_equalTo(self.totalBtnView);
+        make.size.mas_equalTo(CGSizeMake(55, 55));
+    }];
+    [self.vidBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.bottom.equalTo(self.totalBtnView.mas_bottom);
+        make.right.mas_equalTo(self.totalBtnView);
+        make.size.mas_equalTo(CGSizeMake(55, 55));
+    }];
+//    self.totalBtnView.hidden = true;
+//    self.totalBtnView.frame = CGRectMake(CGRectGetWidth(self.bounds)-120+55, CGRectGetMaxY(self.topBar.frame)+10, 55, 120);
+//    self.picBtn.frame = CGRectMake(CGRectGetMinX(self.resolutionLabel.frame), CGRectGetMaxY(self.topBar.frame)+10,55, 55);
+//    self.vidBtn.frame = CGRectMake(self.picBtn.frame.origin.x, CGRectGetMaxY(self.picBtn.frame)+10,55, 55);
+
+    
+    
 }
 
 - (void)didMoveToSuperview
@@ -55,6 +83,7 @@
     [UIView animateWithDuration:MRVideoControlAnimationTimeinterval animations:^{
         self.topBar.alpha = 0;
         self.bottomBar.alpha = 0;
+        self.totalBtnView.alpha = 0.3;
     } completion:^(BOOL finished) {
     }];
 }
@@ -64,17 +93,18 @@
     [UIView animateWithDuration:MRVideoControlAnimationTimeinterval animations:^{
         self.topBar.alpha = 1;
         self.bottomBar.alpha = 1;
+        self.totalBtnView.alpha = 1;
     } completion:^(BOOL finished) {
         [self autoFadeOutControlBar];
     }];
 }
-
+//自动淡出控制栏
 - (void)autoFadeOutControlBar
 {
     [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(animateHide) object:nil];
     [self performSelector:@selector(animateHide) withObject:nil afterDelay:MRVideoControlBarAutoFadeOutTimeinterval];
 }
-
+//取消自动淡出控件栏
 - (void)cancelAutoFadeOutControlBar
 {
     [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(animateHide) object:nil];
@@ -92,7 +122,8 @@
     [self addSubview:self.bottomBar];
     [self addSubview:self.indicatorView];
     [self addSubview:self.alertlable];
-
+    [self addSubview:self.totalBtnView];
+    
     [self.topBar    addSubview:self.closeButton];
     [self.bottomBar addSubview:self.playButton];
     [self.bottomBar addSubview:self.pauseButton];
@@ -100,7 +131,16 @@
     [self.bottomBar addSubview:self.shrinkScreenButton];
     [self.bottomBar addSubview:self.progressSlider];
     [self.bottomBar addSubview:self.timeLabel];
+    [self.bottomBar addSubview:self.actionModelLabel];
+    [self.bottomBar addSubview:self.resolutionLabel];
+    [self.totalBtnView addSubview:self.picBtn];
+    [self.totalBtnView addSubview:self.vidBtn];
     
+//    隐藏拍照及录像按钮
+    self.picBtn.hidden = YES;
+    [self.vidBtn setHidden:YES];
+//
+    self.timeLabel.hidden = true;
     self.pauseButton.hidden = YES;
     self.shrinkScreenButton.hidden = YES;
     
@@ -130,7 +170,7 @@
             
         case UIGestureRecognizerStateBegan: {
             
-            self.alertlable.alpha = MRVideoControlAlertAlpha;
+//            self.alertlable.alpha = MRVideoControlAlertAlpha;
             
         }
             break;
@@ -139,38 +179,38 @@
         case UIGestureRecognizerStateChanged: {
             
             // 判断方向
-            if (ABS(speedDir.x) > ABS(speedDir.y)) {
-                if ([pan translationInView:self].x > 0) {
-                    if ([_delegate respondsToSelector:@selector(controlViewFingerMoveRight)]) {
-                        [self.delegate controlViewFingerMoveRight];
-                    }
-                    [self.alertlable configureWithTime:[self.timeLabel.text substringToIndex:5] isLeft:NO];
-                }else {
-                    if ([_delegate respondsToSelector:@selector(controlViewFingerMoveRight)]) {
-                        [self.delegate controlViewFingerMoveLeft];
-                    }
-                    [self.alertlable configureWithTime:[self.timeLabel.text substringToIndex:5] isLeft:YES];
-                }
-            }else {
-                
-                if (localPoint.x > self.bounds.size.width / 2) {
-                    // 改变音量
-                    if ([pan translationInView:self].y > 0) {
-                        self.volumeSlider.value -= 0.03;
-                    }else {
-                        self.volumeSlider.value += 0.03;
-                    }
-                    [self.alertlable configureWithVolume:self.volumeSlider.value];
-                }else {
-                    // 改变显示亮度
-                    if ([pan translationInView:self].y > 0) {
-                        [UIScreen mainScreen].brightness -= 0.01;
-                    }else {
-                        [UIScreen mainScreen].brightness += 0.01;
-                    }
-                    [self.alertlable configureWithLight];
-                }
-            }
+//            if (ABS(speedDir.x) > ABS(speedDir.y)) {
+//                if ([pan translationInView:self].x > 0) {
+//                    if ([_delegate respondsToSelector:@selector(controlViewFingerMoveRight)]) {
+//                        [self.delegate controlViewFingerMoveRight];
+//                    }
+//                    [self.alertlable configureWithTime:[self.timeLabel.text substringToIndex:5] isLeft:NO];
+//                }else {
+//                    if ([_delegate respondsToSelector:@selector(controlViewFingerMoveRight)]) {
+//                        [self.delegate controlViewFingerMoveLeft];
+//                    }
+//                    [self.alertlable configureWithTime:[self.timeLabel.text substringToIndex:5] isLeft:YES];
+//                }
+//            }else {
+//
+//                if (localPoint.x > self.bounds.size.width / 2) {
+//                    // 改变音量
+//                    if ([pan translationInView:self].y > 0) {
+//                        self.volumeSlider.value -= 0.03;
+//                    }else {
+//                        self.volumeSlider.value += 0.03;
+//                    }
+//                    [self.alertlable configureWithVolume:self.volumeSlider.value];
+//                }else {
+//                    // 改变显示亮度
+//                    if ([pan translationInView:self].y > 0) {
+//                        [UIScreen mainScreen].brightness -= 0.01;
+//                    }else {
+//                        [UIScreen mainScreen].brightness += 0.01;
+//                    }
+//                    [self.alertlable configureWithLight];
+//                }
+//            }
         }
             break;
             
@@ -224,7 +264,8 @@
 {
     if (!_bottomBar) {
         _bottomBar = [UIView new];
-        _bottomBar.backgroundColor = MRRGB(27, 27, 27);
+//        _bottomBar.backgroundColor = MRRGB(27, 27, 27);
+        _bottomBar.backgroundColor = [UIColor clearColor];
     }
     return _bottomBar;
 }
@@ -280,6 +321,7 @@
         [_progressSlider setBackgroundColor:[UIColor clearColor]];
         _progressSlider.value = 0.f;
         _progressSlider.continuous = YES;
+        _progressSlider.hidden = true;//隐藏改控件
     }
     return _progressSlider;
 }
@@ -305,6 +347,62 @@
         _timeLabel.bounds = CGRectMake(0, 0, MRVideoControlTimeLabelFontSize, MRVideoControlBarHeight);
     }
     return _timeLabel;
+}
+- (UILabel *)actionModelLabel
+{
+    if (!_actionModelLabel) {
+        _actionModelLabel = [UILabel new];
+        _actionModelLabel.backgroundColor = [UIColor clearColor];
+        _actionModelLabel.font = [UIFont systemFontOfSize:MRVideoControlTimeLabelFontSize];
+        _actionModelLabel.textColor = [UIColor redColor];
+        _actionModelLabel.textAlignment = NSTextAlignmentLeft;
+        _actionModelLabel.text = @"录像模式";
+        _actionModelLabel.bounds = CGRectMake(0, 0, MRVideoControlTimeLabelFontSize, MRVideoControlBarHeight);
+    }
+    return _actionModelLabel;
+}
+- (UILabel *)resolutionLabel
+{
+    if (!_resolutionLabel) {
+        _resolutionLabel = [UILabel new];
+        _resolutionLabel.backgroundColor = [UIColor clearColor];
+        _resolutionLabel.font = [UIFont systemFontOfSize:MRVideoControlTimeLabelFontSize];
+        _resolutionLabel.textColor = [UIColor redColor];
+        _resolutionLabel.textAlignment = NSTextAlignmentLeft;
+        _resolutionLabel.text = @"高清";
+        _resolutionLabel.bounds = CGRectMake(0, 0, MRVideoControlTimeLabelFontSize, MRVideoControlBarHeight);
+    }
+    return _resolutionLabel;
+}
+-(UIView *)totalBtnView
+{
+    if (!_totalBtnView) {
+        _totalBtnView = [UIView new];
+        _totalBtnView.backgroundColor = [UIColor clearColor];
+    }
+    return _totalBtnView;
+
+}
+
+- (UIButton *)picBtn
+{
+    if (!_picBtn) {
+        _picBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        [_picBtn setImage:[UIImage imageNamed:@"recorder_btn_photograph_default"] forState:UIControlStateNormal];
+        [_picBtn setImage:[UIImage imageNamed:@"recorder_btn_photograph_selected"] forState:UIControlStateSelected];
+        _picBtn.bounds = CGRectMake(0, 0, MRVideoControlBarHeight, MRVideoControlBarHeight);
+    }
+    return _picBtn;
+}
+- (UIButton *)vidBtn
+{
+    if (!_vidBtn) {
+        _vidBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        [_vidBtn setImage:[UIImage imageNamed:@"recorder_btn_videotape_default"] forState:UIControlStateNormal];
+        [_vidBtn setImage:[UIImage imageNamed:@"recorder_btn_videotape_selected"] forState:UIControlStateSelected];
+        _vidBtn.bounds = CGRectMake(0, 0, MRVideoControlBarHeight, MRVideoControlBarHeight);
+    }
+    return _vidBtn;
 }
 
 - (CALayer *)bgLayer {
