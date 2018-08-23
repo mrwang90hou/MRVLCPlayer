@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-
+#import "SVProgressHUD.h"
 @interface AppDelegate ()
 
 @end
@@ -17,6 +17,10 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    
+    
+    [self setSVprogressHUD];
     return YES;
 }
 
@@ -41,5 +45,12 @@
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
-
+- (void)setSVprogressHUD{
+    [SVProgressHUD setMinimumDismissTimeInterval:1.5];
+    [SVProgressHUD setDefaultStyle:SVProgressHUDStyleDark];
+//    [SVProgressHUD setSuccessImage:[UIImage imageNamed:@"pop_toast_success"]];
+//    [SVProgressHUD setErrorImage:[UIImage imageNamed:@"pop_toast_error"]];
+//    [SVProgressHUD setFont:GKFont(14)];
+    [SVProgressHUD setMinimumSize:CGSizeMake(100, 100)];
+}
 @end
