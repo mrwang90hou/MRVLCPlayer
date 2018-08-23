@@ -1,8 +1,12 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="KnE-hI-rID">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="KnE-hI-rID">
+    <device id="retina5_9" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Remote View Controller-->
@@ -14,11 +18,11 @@
                         <viewControllerLayoutGuide type="bottom" id="zVP-gf-A1q"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="mWV-Ib-agD">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IMV-3V-t6g">
-                                <rect key="frame" x="255" y="285" width="90" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IMV-3V-t6g">
+                                <rect key="frame" x="41" y="358" width="293" height="97"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="90" id="X95-aL-Ia3"/>
                                     <constraint firstAttribute="height" constant="30" id="a4q-fF-X76"/>
@@ -29,7 +33,7 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="IMV-3V-t6g" firstAttribute="centerX" secondItem="mWV-Ib-agD" secondAttribute="centerX" id="Et0-RR-oqX"/>
                             <constraint firstItem="IMV-3V-t6g" firstAttribute="centerY" secondItem="mWV-Ib-agD" secondAttribute="centerY" id="f4P-HK-6II"/>
@@ -40,7 +44,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="H9t-Be-laD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1164" y="796"/>
+            <point key="canvasLocation" x="1164" y="795.81280788177344"/>
         </scene>
         <!--Local View Conrtoller-->
         <scene sceneID="CTX-MO-scf">
@@ -51,11 +55,11 @@
                         <viewControllerLayoutGuide type="bottom" id="8is-Uw-mX6"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="0f1-5a-2g6">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q6M-VV-Bww">
-                                <rect key="frame" x="255" y="285" width="90" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q6M-VV-Bww">
+                                <rect key="frame" x="41" y="358" width="292" height="97"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="Cz0-vh-gdn"/>
                                     <constraint firstAttribute="width" constant="90" id="FUg-Nd-ox4"/>
@@ -66,7 +70,7 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="q6M-VV-Bww" firstAttribute="centerX" secondItem="0f1-5a-2g6" secondAttribute="centerX" id="Ic7-GT-ftJ"/>
                             <constraint firstItem="q6M-VV-Bww" firstAttribute="centerY" secondItem="0f1-5a-2g6" secondAttribute="centerY" id="v5t-Jb-L52"/>
@@ -77,7 +81,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jfl-9i-mv4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1164" y="135"/>
+            <point key="canvasLocation" x="1164" y="134.48275862068965"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="aPb-e6-f9n">
@@ -86,7 +90,7 @@
                     <tabBar key="tabBar" contentMode="scaleToFill" id="c5A-p5-Vcl">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBar>
                     <connections>
                         <segue destination="Rdv-Ao-4J2" kind="relationship" relationship="viewControllers" id="gCy-kT-byt"/>

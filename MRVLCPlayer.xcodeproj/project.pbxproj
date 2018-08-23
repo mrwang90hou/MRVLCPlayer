@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		05C6B4A229F592AB62616033 /* libPods-MRVLCPlayer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 84B7040456646FB2FA0B6210 /* libPods-MRVLCPlayer.a */; };
+		0B4C977E212D3C0F008B802A /* MobileVLCKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B4C977D212D3C0F008B802A /* MobileVLCKit.framework */; };
 		184C687B1C89A0FE006DF9E3 /* MRVideoHUDView.m in Sources */ = {isa = PBXBuildFile; fileRef = 184C686B1C89A0FE006DF9E3 /* MRVideoHUDView.m */; };
 		184C687F1C8AC35E006DF9E3 /* MRVLCPlayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 184C687E1C8AC35E006DF9E3 /* MRVLCPlayer.mm */; };
 		18D6289C1C7DC3B800DDA9E7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D6289B1C7DC3B800DDA9E7 /* main.m */; };
@@ -57,6 +59,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0B4C977D212D3C0F008B802A /* MobileVLCKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileVLCKit.framework; path = "MobileVLCKit/MobileVLCKit-binary/MobileVLCKit.framework"; sourceTree = SOURCE_ROOT; };
 		184C686A1C89A0FE006DF9E3 /* MRVideoHUDView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRVideoHUDView.h; sourceTree = "<group>"; };
 		184C686B1C89A0FE006DF9E3 /* MRVideoHUDView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRVideoHUDView.m; sourceTree = "<group>"; };
 		184C687D1C8AC35E006DF9E3 /* MRVLCPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRVLCPlayer.h; sourceTree = "<group>"; };
@@ -114,6 +117,9 @@
 		42E8F5911C8E7F6600A3A595 /* Sound Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Sound Icon.png"; sourceTree = "<group>"; };
 		42E8F5921C8E7F6600A3A595 /* Sound Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Sound Icon@2x.png"; sourceTree = "<group>"; };
 		42E8F5931C8E7F6600A3A595 /* Sound Icon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Sound Icon@3x.png"; sourceTree = "<group>"; };
+		5AEA840B79BBB045D9C8DD81 /* Pods-MRVLCPlayer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MRVLCPlayer.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MRVLCPlayer/Pods-MRVLCPlayer.debug.xcconfig"; sourceTree = "<group>"; };
+		81A991BCC3A2570F7AFB9504 /* Pods-MRVLCPlayer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MRVLCPlayer.release.xcconfig"; path = "Pods/Target Support Files/Pods-MRVLCPlayer/Pods-MRVLCPlayer.release.xcconfig"; sourceTree = "<group>"; };
+		84B7040456646FB2FA0B6210 /* libPods-MRVLCPlayer.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MRVLCPlayer.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +128,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				18D628E61C7DC4AB00DDA9E7 /* CoreAudio.framework in Frameworks */,
+				0B4C977E212D3C0F008B802A /* MobileVLCKit.framework in Frameworks */,
 				18D628E81C7DC4AB00DDA9E7 /* CoreMedia.framework in Frameworks */,
 				18D628E51C7DC4AB00DDA9E7 /* AVFoundation.framework in Frameworks */,
 				18D628DF1C7DC4AB00DDA9E7 /* libbz2.1.0.dylib in Frameworks */,
@@ -134,6 +141,7 @@
 				18D628E11C7DC4AB00DDA9E7 /* libc++.1.dylib in Frameworks */,
 				18D628E31C7DC4AB00DDA9E7 /* libstdc++.6.0.9.dylib in Frameworks */,
 				18D628E71C7DC4AB00DDA9E7 /* CoreVideo.framework in Frameworks */,
+				05C6B4A229F592AB62616033 /* libPods-MRVLCPlayer.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -189,6 +197,8 @@
 			children = (
 				18D628991C7DC3B800DDA9E7 /* MRVLCPlayer */,
 				18D628981C7DC3B800DDA9E7 /* Products */,
+				3E11C27CDE4FFB823CDC7F71 /* Pods */,
+				A87D17DCFF17783430F09580 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -224,6 +234,7 @@
 		18D6289A1C7DC3B800DDA9E7 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				0B4C977D212D3C0F008B802A /* MobileVLCKit.framework */,
 				18D628D31C7DC4AB00DDA9E7 /* libbz2.1.0.dylib */,
 				18D628D41C7DC4AB00DDA9E7 /* libz.1.dylib */,
 				18D628D51C7DC4AB00DDA9E7 /* libc++.1.dylib */,
@@ -242,6 +253,15 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		3E11C27CDE4FFB823CDC7F71 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				5AEA840B79BBB045D9C8DD81 /* Pods-MRVLCPlayer.debug.xcconfig */,
+				81A991BCC3A2570F7AFB9504 /* Pods-MRVLCPlayer.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		4248F6161C9E962100835E8E /* Resource */ = {
 			isa = PBXGroup;
 			children = (
@@ -251,6 +271,14 @@
 			path = Resource;
 			sourceTree = "<group>";
 		};
+		A87D17DCFF17783430F09580 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				84B7040456646FB2FA0B6210 /* libPods-MRVLCPlayer.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -258,9 +286,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 18D628AE1C7DC3B800DDA9E7 /* Build configuration list for PBXNativeTarget "MRVLCPlayer" */;
 			buildPhases = (
+				C1CED0E9CAC21259F9626022 /* [CP] Check Pods Manifest.lock */,
 				18D628931C7DC3B800DDA9E7 /* Sources */,
 				18D628941C7DC3B800DDA9E7 /* Frameworks */,
 				18D628951C7DC3B800DDA9E7 /* Resources */,
+				BB61404CB4ADEDD57EA49C23 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -282,7 +312,7 @@
 				TargetAttributes = {
 					18D628961C7DC3B800DDA9E7 = {
 						CreatedOnToolsVersion = 7.2;
-						DevelopmentTeam = 678WD436L9;
+						DevelopmentTeam = NLQX8R2PJC;
 					};
 				};
 			};
@@ -340,6 +370,47 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		BB61404CB4ADEDD57EA49C23 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-MRVLCPlayer/Pods-MRVLCPlayer-resources.sh",
+				"${PODS_CONFIGURATION_BUILD_DIR}/MBCircularProgressBar/MBCircularProgressBar.bundle",
+				"${PODS_ROOT}/SVProgressHUD/SVProgressHUD/SVProgressHUD.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MBCircularProgressBar.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/SVProgressHUD.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MRVLCPlayer/Pods-MRVLCPlayer-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C1CED0E9CAC21259F9626022 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MRVLCPlayer-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		18D628931C7DC3B800DDA9E7 /* Sources */ = {
@@ -462,30 +533,40 @@
 		};
 		18D628AF1C7DC3B800DDA9E7 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5AEA840B79BBB045D9C8DD81 /* Pods-MRVLCPlayer.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_CXX_LIBRARY = "libstdc++";
+				DEVELOPMENT_TEAM = NLQX8R2PJC;
 				ENABLE_BITCODE = NO;
-				FRAMEWORK_SEARCH_PATHS = "\"$(SRCROOT)/../../Resource/SDK/MobileVLCKit-binary\"";
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SRCROOT)/../../Resource/SDK/MobileVLCKit-binary\"",
+					"$(PROJECT_DIR)/MobileVLCKit/MobileVLCKit-binary",
+				);
 				INFOPLIST_FILE = MRVLCPlayer/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = Alloc.MRVLCPlayer;
+				PRODUCT_BUNDLE_IDENTIFIER = Alloc.mrwang90hou.MRVLCPlayer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
 		};
 		18D628B01C7DC3B800DDA9E7 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 81A991BCC3A2570F7AFB9504 /* Pods-MRVLCPlayer.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_CXX_LIBRARY = "libstdc++";
+				DEVELOPMENT_TEAM = NLQX8R2PJC;
 				ENABLE_BITCODE = NO;
-				FRAMEWORK_SEARCH_PATHS = "\"$(SRCROOT)/../../Resource/SDK/MobileVLCKit-binary\"";
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SRCROOT)/../../Resource/SDK/MobileVLCKit-binary\"",
+					"$(PROJECT_DIR)/MobileVLCKit/MobileVLCKit-binary",
+				);
 				INFOPLIST_FILE = MRVLCPlayer/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = Alloc.MRVLCPlayer;
+				PRODUCT_BUNDLE_IDENTIFIER = Alloc.mrwang90hou.MRVLCPlayer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

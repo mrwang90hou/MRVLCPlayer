@@ -42,6 +42,15 @@
 @property (nonatomic, strong) MPVolumeView *volumeView;
 @property (nonatomic, strong) UILabel *alertlable;
 
+
+//新增：目前模式、清晰状态、拍照及录像按钮
+@property (nonatomic,strong) UILabel *actionModelLabel;
+@property (nonatomic,strong) UILabel *resolutionLabel;
+//
+@property (nonatomic,strong) UIView *totalBtnView;
+@property (nonatomic,strong) UIButton *picBtn;
+@property (nonatomic,strong) UIButton *vidBtn;
+
 - (void)animateHide;
 - (void)animateShow;
 - (void)autoFadeOutControlBar;
